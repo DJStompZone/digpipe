@@ -68,8 +68,10 @@ jobs:
       - name: Prepare Pages
         run: |
           mkdir public
-          cp README.md public/
           cp -r htmlcov public/htmlcov
+          # Convert README to HTML using pandoc (simple conversion)
+          sudo apt-get update && sudo apt-get install -y pandoc
+          pandoc README.md -f markdown -t html -s -o public/index.html --metadata title="DigPipe Documentation"
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
