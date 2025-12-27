@@ -1,7 +1,7 @@
 [project]
 name = "digpipe"
-version = "0.1.0"
-description = ""
+version = "1.0.0"
+description = "Decimal-Digit Input Pipeline"
 authors = [
     {name = "DJ Stomp",email = "85457381+DJStompZone@users.noreply.github.com"}
 ]
@@ -16,6 +16,13 @@ packages = [{include = "digpipe"}]
 
 [tool.poetry.group.dev.dependencies]
 pytest-cov = "^7.0.0"
+coverage = "^7.13.0"
+pyrefly = "^0.46.1"
+
+[tool.pyrefly]
+project-includes = [
+    "**/*.py*",
+]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

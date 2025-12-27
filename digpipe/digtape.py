@@ -1,9 +1,7 @@
 """Implementation of digit storage on disk."""
 
 import json
-import os
 from pathlib import Path
-from typing import Optional
 from .types import DigitChunk, DigitTape
 
 class FileDigitTape(DigitTape):

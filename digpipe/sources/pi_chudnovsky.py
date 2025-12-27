@@ -1,7 +1,7 @@
 """Pi digit generator using Chudnovsky algorithm and integer arithmetic."""
 
 import math
-from typing import Iterator, Tuple
+from typing import Iterator
 from ..types import DigitChunk, DigitSource
 
 class PiDigitSource(DigitSource):
