@@ -43,9 +43,19 @@ jobs:
       - name: Install project
         run: poetry install --no-interaction
 
-      - name: Run PyRefly
-        run: |
-          poetry run pyrefly
+      - name: Run PyRefly Check
+        run: poetry run pyrefly check
+
+      - name: Generate PyRefly Report
+        if: success() || failure()
+        run: poetry run pyrefly report >> pyrefly-report.json
+
+      - name: Upload PyRefly Report
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pyrefly-report
+          path: pyrefly-report.json
 
       - name: Run Tests with Coverage
         run: |
