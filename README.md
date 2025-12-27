@@ -2,6 +2,7 @@
 
 Modular Decimal-Digit Input Pipeline for GBA Emulation
 
+![GitHub License](https://img.shields.io/github/license/djstompzone/digpipe)
 ![PyPI - Version](https://img.shields.io/pypi/v/digpipe?logo=pypi&logoColor=yellow&label=PyPi%20%7C%20Latest&link=https%3A%2F%2Fpypi.org%2Fproject%2Fdigpipe%2F)
 [![CI](https://github.com/DJStompZone/digpipe/actions/workflows/ci.yml/badge.svg)](https://github.com/DJStompZone/digpipe/actions/workflows/ci.yml) [![CD](https://github.com/DJStompZone/digpipe/actions/workflows/cd.yml/badge.svg)](https://github.com/DJStompZone/digpipe/actions/workflows/cd.yml) [![CodeQL Advanced](https://github.com/DJStompZone/digpipe/actions/workflows/codeql.yml/badge.svg)](https://github.com/DJStompZone/digpipe/actions/workflows/codeql.yml) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/digpipe)
 
