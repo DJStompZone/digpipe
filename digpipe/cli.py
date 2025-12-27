@@ -42,6 +42,9 @@ def main():
 
     # Cov Command
     subparsers.add_parser("cov", help="Run coverage")
+
+    # Help Command
+    subparsers.add_parser("help", help="Show help")
     
     args = parser.parse_args()
     
@@ -68,6 +71,8 @@ def main():
             run_command(["poetry", "run", "coverage", "report"])
             run_command(["poetry", "run", "coverage", "html"])
             print("Coverage HTML report generated in htmlcov/")
+        elif args.command == "help":
+            parser.print_help()
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
