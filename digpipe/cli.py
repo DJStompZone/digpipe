@@ -1,8 +1,22 @@
 """Command Line Interface for DigPipe."""
 
+from typing import List
 import argparse
 import sys
+import subprocess
 from . import pipeline
+
+def run_command(args: List[str], check: bool = True) -> None:
+    """Run a subprocess command safely."""
+    try:
+        # Pylance/MyPy friendly subprocess call
+        subprocess.run(args, check=check)
+    except subprocess.CalledProcessError as e:
+        print(f"Command failed with exit code {e.returncode}", file=sys.stderr)
+        sys.exit(e.returncode)
+    except FileNotFoundError:
+        print(f"Command not found: {args[0]}", file=sys.stderr)
+        sys.exit(1)
 
 def main():
     parser = argparse.ArgumentParser(description="DigPipe: Modular Decimal-Digit Input Pipeline")
@@ -22,6 +36,12 @@ def main():
     render_parser.add_argument("--sink", default="frame-log", help="Sink to use")
     render_parser.add_argument("--start-chunk", type=int, default=0, help="Start rendering from this chunk index")
     render_parser.add_argument("--out", default="-", help="Output file (default: stdout)")
+
+    # Test Command
+    subparsers.add_parser("test", help="Run tests")
+
+    # Cov Command
+    subparsers.add_parser("cov", help="Run coverage")
     
     args = parser.parse_args()
     
@@ -41,6 +61,13 @@ def main():
                 output_path=args.out,
                 start_chunk=args.start_chunk
             )
+        elif args.command == "test":
+            run_command(["poetry", "run", "pytest"])
+        elif args.command == "cov":
+            run_command(["poetry", "run", "coverage", "run", "-m", "pytest"])
+            run_command(["poetry", "run", "coverage", "report"])
+            run_command(["poetry", "run", "coverage", "html"])
+            print("Coverage HTML report generated in htmlcov/")
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)

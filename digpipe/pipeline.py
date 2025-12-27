@@ -49,7 +49,7 @@ def run_rendering(
     start_chunk: int = 0
 ) -> None:
     """Runs the rendering pipeline: Tape -> Mapper -> Sink."""
-    tape = FileDigitTape(tape_path)
+    tape = FileDigitTape(tape_path, create_if_missing=False)
     if not tape.header_path.exists():
         raise FileNotFoundError(f"No tape found at {tape_path}")
         

@@ -184,9 +184,6 @@ class PiDigitSource(DigitSource):
             
             # print(f"DEBUG: BS merge {a}-{b} -> Q={Q}")
             
-            # Temporary debug to find the zero
-            if Q == 0:
-                print(f"DEBUG: FOUND Q=0 at a={a}, b={b}, m={m}")
-                print(f"  Left Q={Q_am}, Right Q={Q_mb}")
+
             
             return P, Q, T

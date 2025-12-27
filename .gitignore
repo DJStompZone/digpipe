@@ -224,3 +224,4 @@ __marimo__/
 .pytest_cache/
 
 tape_test/
+out.txt
